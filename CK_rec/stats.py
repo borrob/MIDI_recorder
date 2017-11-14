@@ -38,6 +38,48 @@ class Stats:
             print("x" * self.notes_playing[i], end="")
             print(" ({0})".format(self.notes_playing[i]))
 
+    def print_stats_horizontal(self):
+        """Print the stats in a bar graph.
+        """
+        max_hits = max(self.notes_playing)
+        for i in range(max_hits):
+            j = max_hits - i
+            printline = [" " if x < j else "x" for x in self.notes_playing]
+            print("".join(printline))
+
+    def print_header(self):
+        """Print a header line.
+        
+        This should help you to navigate between midinumbers.
+        """
+        print(" 1   5    10   15   20   25   30   35   40   45   50   55   " \
+             +"60   65   70   75   80   85   90   95   100  105  110  115  " \
+             +"120  125")
+        print("C0   F0   A#0  D#1  G#1  C#2  F#2  B2   E3   A3   D4   G4   " \
+             +"C5   F5   A#5  D#6  G#6  C#7  F#7  B7   E8   A8   D9   G9   " \
+             +"C10  F10")
+        print("_|___|____|____|____|____|____|____|____|____|____|____|____" \
+             +"|____|____|____|____|____|____|____|____|____|____|____|____" \
+             +"|____|__")
+
+    def print_footer(self):
+        """Print a footer line.
+        
+        This should help you to navigate between midinumbers.
+        """
+        print("_ ___ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____" \
+             +" ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____" \
+             +" ____ __")
+        print(" |   |    |    |    |    |    |    |    |    |    |    |    " \
+             +"|    |    |    |    |    |    |    |    |    |    |    |    " \
+             +"|    |  ")
+        print(" 1   5    10   15   20   25   30   35   40   45   50   55   " \
+             +"60   65   70   75   80   85   90   95   100  105  110  115  " \
+             +"120  125")
+        print("C0   F0   A#0  D#1  G#1  C#2  F#2  B2   E3   A3   D4   G4   " \
+             +"C5   F5   A#5  D#6  G#6  C#7  F#7  B7   E8   A8   D9   G9   " \
+             +"C10  F10")
+
 def main():
     stats = Stats()
     stats.note_on(5)
@@ -58,6 +100,9 @@ def main():
     for i in range(17):
         stats.note_on(117)
     stats.print_stats()
+    stats.print_header()
+    stats.print_stats_horizontal()
+    stats.print_footer()
 
 if __name__ == '__main__':
     main()
