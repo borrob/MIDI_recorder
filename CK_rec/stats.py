@@ -35,7 +35,8 @@ class Stats:
         notes_per_scale = len(self.SCALE)
         for i, note in enumerate(self.notes_playing):
             print("Note {0:>3} ({1:>2}{2:<2}):".format(i, self.SCALE[i%notes_per_scale],i//notes_per_scale),end="")
-            print("x" * self.notes_playing[i])
+            print("x" * self.notes_playing[i], end="")
+            print(" ({0})".format(self.notes_playing[i]))
 
 def main():
     stats = Stats()
@@ -52,6 +53,10 @@ def main():
     stats.note_on(105)
     for i in range(10):
         stats.note_on(115)
+    for i in range(20):
+        stats.note_on(116)
+    for i in range(17):
+        stats.note_on(117)
     stats.print_stats()
 
 if __name__ == '__main__':
